@@ -19,6 +19,7 @@ const Layout = () => {
         </CustomLink>
       </header>
 
+      {/* Этот  <Outlet /> и есть лайаут, то что меняется.  */}
       <main className="container">
         <Outlet />
       </main>

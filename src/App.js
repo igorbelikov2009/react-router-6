@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import AboutPage from "./pages/AboutPage";
+import About from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
@@ -20,7 +20,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
+
+          {/* Случай, если вложенные в about роуты находятся на самой странице About:
+          Запись: path="about/*" - говорит, что любой адрес, который 
+          начинается у нас с about/, всегда будет иметь компонент {<About />} */}
+
+          {/* Случай, если вложенные в about роуты находятся здесь, в основном роуте, 
+          то достаточно записи: path="about" */}
+          <Route path="about/*" element={<About />}>
+            <Route path="contacts" element={<p> Our contacts</p>} />
+            <Route path="team" element={<p> Our team</p>} />
+          </Route>
+
           <Route path="about-us" element={<Navigate to="/about" replace />} />
           <Route path="posts" element={<BlogPage />} />
           {/* <Route path="posts/:category/:title" element={<Singlepage />} />
