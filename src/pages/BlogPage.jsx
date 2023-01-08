@@ -66,10 +66,9 @@ const BlogPage = () => {
 };
 
 async function getPosts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/postsccc");
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
 
   if (!res.ok) {
-    // Сроу, выкинь мне ответ, в котором у меня будет текстовое сообщение.
     throw new Response("", { status: res.status, statusText: "Not found!!!" });
   }
 
