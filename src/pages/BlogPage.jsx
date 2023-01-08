@@ -26,7 +26,7 @@ const BlogPage = () => {
   // // Это версия до использования загрузки данных
   // useEffect(() => {
   //   fetch("https://jsonplaceholder.typicode.com/posts")
-  //     .then((response) => response.json())
+  //     .then((res) => res.json())
   //     .then((data) => setPosts(data));
   // }, []);
 
@@ -66,8 +66,14 @@ const BlogPage = () => {
 };
 
 async function getPosts() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  return response.json();
+  const res = await fetch("https://jsonplaceholder.typicode.com/postsccc");
+
+  if (!res.ok) {
+    // Сроу, выкинь мне ответ, в котором у меня будет текстовое сообщение.
+    throw new Response("", { status: res.status, statusText: "Not found!!!" });
+  }
+
+  return res.json();
 }
 
 const blogLoader = async ({ request, params }) => {
@@ -77,8 +83,8 @@ const blogLoader = async ({ request, params }) => {
   return defer({
     posts: getPosts(),
   });
-  // const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  // return response.json();
+  // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  // return res.json();
 };
 
 export { BlogPage, blogLoader };

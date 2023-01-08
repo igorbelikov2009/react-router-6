@@ -14,11 +14,12 @@ import { RequireAuth } from "./hok/RequireAutth";
 import { AuthProvider } from "./hok/AuthProvider";
 import Errorpage from "./pages/Errorpage";
 
-// Это версия страницы App для использования загрузки данных. errorElement используется
+// Это версия страницы App для использования загрузки данных. Проп errorElement используется
 // только тогда, когда используется загрузка данных через роуты. errorElement={<Errorpage />}
 // может находится в конкретном роуте, родительском роуте, корневом роуте. Случается ошибка,
 // она всплывает, находит первый errorElement, и отрисовывает компонент, который мы сюда
-// передаём.
+// передаём, вместо того, на котором он лежит. То есть, в случае ошибки, у нас не отрисовывается
+// тот компонент, на котором лежит проп errorElement.
 // Создаём хэлпер (для использования загрузки данных)
 const routerHelper = createBrowserRouter(
   createRoutesFromElements(
