@@ -2,7 +2,7 @@
 import { Route, Navigate, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import About from "./pages/AboutPage";
 import { blogLoader, BlogPage } from "./pages/BlogPage";
-import CreatePost from "./pages/CreatePost";
+import { CreatePost, createPostAction } from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import { postLoader, Singlepage } from "./pages/Singlepage";
 import HomePage from "./pages/HomePage";
@@ -40,6 +40,7 @@ const routerHelper = createBrowserRouter(
             <CreatePost />
           </RequireAuth>
         }
+        action={createPostAction}
       />
       <Route path="login" element={<LoginPage />} />
       <Route path="*" element={<NotfoundPage />} />

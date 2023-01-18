@@ -101,3 +101,11 @@ main {
 .mb-5 {
   margin-bottom: 5rem;
 }
+.createPost {
+  display: flex;
+  flex-direction: column;
+}
+.buttonContainer {
+  width: 100%;
+  max-width: 320px;
+}
